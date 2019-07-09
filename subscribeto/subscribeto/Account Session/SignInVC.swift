@@ -11,44 +11,53 @@ import UIKit
 
 class SignInVC: UIViewController {
 	
-	@IBOutlet var topViewContraint: NSLayoutConstraint!
-	@IBOutlet var topView: UIView!
-	@IBOutlet var topLabel: UILabel!
-	@IBOutlet var emailField: S2Field!
-	@IBOutlet var passwordField: S2Field!
-	@IBOutlet var signUpButton: S2Button!
+	@IBOutlet var imageViewHeightConstraint: NSLayoutConstraint!
+	@IBOutlet var buttonTrayBaseConstraint: NSLayoutConstraint!
+	@IBOutlet var emailField: S2UIField!
+	@IBOutlet var passwordField: S2UIField!
+	@IBOutlet var signInButton: S2UIButton!
+	@IBOutlet var signUpButton: S2UIButton!
 	
-	func handleKeyboardDidPresent(frame: CGRect) {
+	func handleFieldKeyboardUpdate(_ frame: CGRect = CGRect(x: 0, y: 0, width: 0, height: 20)) {
 		
-		let h1 = self.view.frame.size.height
-		let h2 = signUpButton.frame.size.height
-		let h3 = passwordField.frame.size.height
-		let h4 = emailField.frame.size.height
-		let h5 = frame.size.height
-		topViewContraint.constant = h1 - h2 - h3 - h4 - h5 - 140
+		self.buttonTrayBaseConstraint.constant = frame.size.height - 20
+		self.imageViewHeightConstraint.constant = self.view.frame.size.height - self.buttonTrayBaseConstraint.constant - 300
 		
-		self.view.layoutIfNeeded()
+		UIView.animate(withDuration: 1, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: [], animations: {
+			
+			self.view.layoutIfNeeded()
+			
+		})
+	}
+	
+	func signIn() {
+		
+		
 		
 	}
 	
+	func signUp() {
+		
+		
+		
+	}
+
 	override func viewDidLoad() {
 		
 		super.viewDidLoad()
 		
-		view.backgroundColor = UIColor.subscribeto.black
-		topLabel.textColor = UIColor.subscribeto.blue1
-		
 		emailField.setType(type: .email)
-		emailField.onDone { (value: String) in
-			
-			print("Email: \(value)")
-			self.passwordField.becomeActive()
-			
-		}
-		emailField.onKeyboardDidPresent(handleKeyboardDidPresent)
-		passwordField.onKeyboardDidPresent(handleKeyboardDidPresent)
 		passwordField.setType(type: .password)
-		handleKeyboardDidPresent(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
+		
+		passwordField.onEndEditing { self.handleFieldKeyboardUpdate() }
+		emailField.onEndEditing { self.handleFieldKeyboardUpdate() }
+		
+		emailField.onKeyboardWillChangeFrame(handleFieldKeyboardUpdate)
+		passwordField.onKeyboardWillChangeFrame(handleFieldKeyboardUpdate)
+		
+		signInButton.onClick(signIn)
+		signUpButton.onClick(signUp)
+		
 	}
 
 }
