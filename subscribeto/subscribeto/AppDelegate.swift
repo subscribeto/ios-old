@@ -16,7 +16,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 		
-		
+		UITabBar.appearance().backgroundColor = UIColor(red: 0.086, green: 0.098, blue: 0.145, alpha: 1.00)
+		UITabBar.appearance().tintColor = UIColor(red: 0.373, green: 0.714, blue: 0.953, alpha: 1.00)
+		UITabBar.appearance().unselectedItemTintColor = UIColor(red: 0.000, green: 0.141, blue: 0.282, alpha: 1.00)
+		UINavigationBar.appearance().backgroundColor = UIColor(red: 0.086, green: 0.098, blue: 0.145, alpha: 1.00)
 		
 		return true
 		

@@ -4,6 +4,8 @@
 
 ## Xcode Project
 subscribeto/subscribeto.xcodeproj
+subscribeto/Podfile.lock
+subscribeto/Pods/
 .DS_Store
 subscribeto/subscribeto/.DS_Store
 subscribeto/subscribeto/Assets.xcassets/.DS_Store
