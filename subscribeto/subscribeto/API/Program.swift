@@ -22,4 +22,40 @@ struct Program : Decodable {
 	let updatedAt: Int
 	let createdAt: Int
 	
+	static func getFor (
+		id programId: String,
+		onFailure failureHandler: @escaping API.FailureHandler,
+		onSuccess successHandler: @escaping API.SucccessHandler<Program>
+	) {
+		let req = API.Request(method: .put, endpoint: "/program/\(programId)")
+		req.fetch(onFailure: failureHandler, onSuccess: successHandler)
+	}
+	
+	static func getAllFor (
+		product productId: String,
+		onFailure failureHandler: @escaping API.FailureHandler,
+		onSuccess successHandler: @escaping API.SucccessHandler<Session>
+	) {
+		let req = API.Request(method: .put, endpoint: "/program/product/\(productId)")
+		req.fetch(onFailure: failureHandler, onSuccess: successHandler)
+	}
+	
+	static func getAllFor (
+		business businessId: String,
+		onFailure failureHandler: @escaping API.FailureHandler,
+		onSuccess successHandler: @escaping API.SucccessHandler<Session>
+	) {
+		let req = API.Request(method: .put, endpoint: "/program/business/\(businessId)")
+		req.fetch(onFailure: failureHandler, onSuccess: successHandler)
+	}
+	
+	static func getAllFor (
+		businessWhereClosed businessId: String,
+		onFailure failureHandler: @escaping API.FailureHandler,
+		onSuccess successHandler: @escaping API.SucccessHandler<Session>
+	) {
+		let req = API.Request(method: .put, endpoint: "/program/business/\(businessId)/closed")
+		req.fetch(onFailure: failureHandler, onSuccess: successHandler)
+	}
+	
 }
