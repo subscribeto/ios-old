@@ -8,8 +8,6 @@
 
 import UIKit
 import MapKit
-import PromiseKit
-import AwaitKit
 
 class MainVC: UIViewController {
 	
@@ -39,11 +37,6 @@ class MainVC: UIViewController {
 		
 		super.viewDidAppear(animated)
 		
-		async {
-			try await(API.signUp(email: "elijah", password: "alpine"))
-		}
-		
 	}
 	
 }
-

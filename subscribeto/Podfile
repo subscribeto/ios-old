@@ -1,3 +1,0 @@
-target 'subscribeto' do
-  pod 'AwaitKit', '~> 5.2.0'
-end
