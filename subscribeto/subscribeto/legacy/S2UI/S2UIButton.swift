@@ -32,10 +32,21 @@ class S2UIButton: UIButton {
 		
 	}
 	
+	init() {
+		
+		super.init(frame: CGRect())
+		
+		self.addTarget(self, action: #selector(handleClick), for: .touchUpInside)
+		self.layer.cornerRadius = 10
+		
+		setType(.primary)
+		
+	}
+	
 	public func setType(_ type: Mode) {
 		
-		self.backgroundColor = type == .primary ? UIColor.subscribeto.blue1 : .clear
-		self.setTitleColor(type == .primary ? UIColor.subscribeto.blue4 : UIColor.subscribeto.blue1, for: .normal)
+		self.backgroundColor = type == .primary ? UIColor.subscribeto.primary : .clear
+		self.setTitleColor(type == .primary ? .white : UIColor.subscribeto.white, for: .normal)
 		self.titleLabel?.font = UIFont.systemFont(ofSize: 18, weight: type == .primary ? .bold : .regular)
 		
 	}

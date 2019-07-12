@@ -66,6 +66,26 @@ struct User : Decodable {
 		req.fetch(onFailure: failureHandler, onSuccess: successHandler)
 	}
 	
+	static func signIn (
+		code: String,
+		token: API.Token,
+		onFailure failureHandler: @escaping API.FailureHandler,
+		onSuccess successHandler: @escaping API.SucccessHandler<API.TokenResponse>
+	) {
+		var endpoint: String
+		switch token {
+		case .sms:
+			endpoint = "/user/auth/sign-in/sms"
+		case .totp:
+			endpoint = "/user/auth/sign-in/totp"
+		default:
+			return failureHandler(API.NetworkError(code: .unknown, message: "You cannot finish sign in with this token."))
+		}
+		var req = API.Request(method: .post, endpoint: endpoint)
+		req.set(body: ["token": token, "code": code])
+		req.fetch(onFailure: failureHandler, onSuccess: successHandler)
+	}
+	
 	static func getMe (
 		onFailure failureHandler: @escaping API.FailureHandler,
 		onSuccess successHandler: @escaping API.SucccessHandler<User>
@@ -142,5 +162,7 @@ struct User : Decodable {
 		req.addToken()
 		req.fetch(onFailure: failureHandler, onSuccess: successHandler)
 	}
+	
+	
 	
 }

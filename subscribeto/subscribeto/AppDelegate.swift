@@ -9,74 +9,26 @@
 import UIKit
 
 @UIApplicationMain
+
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
 	var window: UIWindow?
-
-
+	
 	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 		
+		window = UIWindow(frame: UIScreen.main.bounds)
+		
+		let vc = UIViewController()
+		vc.view.backgroundColor = .white
+		let label = UILabel()
+		label.text = "HI"
+		label.frame = CGRect(x: 10, y: 10, width: 200, height: 30)
+		vc.view.addSubview(label)
 		
 		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		User.token = "vGLHoKgcIvS8i3Wf"
-		
-		User.getMe(onFailure: { (err) in
-			
-			print(err)
-			
-		}, onSuccess: { (user) in
-			
-			print(user.id)
-			
-		})
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		UITabBar.appearance().backgroundColor = UIColor(red: 0.086, green: 0.098, blue: 0.145, alpha: 1.00)
-		UITabBar.appearance().tintColor = UIColor(red: 0.373, green: 0.714, blue: 0.953, alpha: 1.00)
-		UITabBar.appearance().unselectedItemTintColor = UIColor(red: 0.000, green: 0.141, blue: 0.282, alpha: 1.00)
-		UINavigationBar.appearance().backgroundColor = UIColor(red: 0.086, green: 0.098, blue: 0.145, alpha: 1.00)
+		window?.rootViewController = vc
+		window?.makeKeyAndVisible()
+
 		
 		return true
 		

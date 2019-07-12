@@ -20,6 +20,8 @@ struct API {
 	
 	typealias SucccessHandler<T> = (T) -> Void
 	typealias FailureHandler = (API.NetworkError) -> Void
+	static var user : User?
+	static var session: Session?
 	
 	struct NetworkError {
 		let code: NetworkStatusCode

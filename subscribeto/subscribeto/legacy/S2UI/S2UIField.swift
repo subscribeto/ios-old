@@ -58,7 +58,7 @@ class S2UIField: UIView {
 	
 	func setPlaceholder(_ value: String) {
 		
-		field.attributedPlaceholder = NSAttributedString(string: value, attributes: [NSAttributedString.Key.foregroundColor: UIColor.subscribeto.blue3])
+		field.attributedPlaceholder = NSAttributedString(string: value, attributes: [NSAttributedString.Key.foregroundColor: UIColor.subscribeto.primary])
 		
 	}
 	
@@ -129,18 +129,18 @@ class S2UIField: UIView {
 
 		field.frame = CGRect(x: 20, y: 8, width: frame.width - 28, height: frame.height - 16)
 		field.text = ""
-		field.keyboardAppearance = .dark
+		field.keyboardAppearance = .light
 		field.backgroundColor = .clear
 		field.returnKeyType = .continue
-		field.tintColor = UIColor.subscribeto.blue1
-		field.textColor = UIColor.subscribeto.blue1
+		field.tintColor = UIColor.subscribeto.primary
+		field.textColor = .black
 		field.addTarget(self, action: #selector(editingDidEnd), for: .editingDidEnd)
 		field.addTarget(self, action: #selector(editingDidEnd), for: .editingDidEndOnExit)
 		field.addTarget(self, action: #selector(editingDidBegin), for: .editingDidBegin)
 		self.addSubview(field)
 		
-		self.backgroundColor = .black;
-		self.layer.borderColor = UIColor.subscribeto.blue2.cgColor
+		self.backgroundColor = .clear;
+		self.layer.borderColor = UIColor.subscribeto.primary.cgColor
 		self.layer.borderWidth = 4
 		self.layer.cornerRadius = 10
 		self.autoresizesSubviews = true
