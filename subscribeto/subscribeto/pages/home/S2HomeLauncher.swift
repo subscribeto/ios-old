@@ -15,16 +15,7 @@ class S2HomeLauncher : UIView {
 	var launchItemStore: S2HomeLaunchItem!
 	var launchItemSettings: S2HomeLaunchItem!
 	
-	func layoutLaunchItems() {
-		
-		launchItemOrder = S2HomeLaunchItem(text: "Order", image: "order")
-		launchItemSubscriptions = S2HomeLaunchItem(text: "Subscriptions", image: "subscriptions")
-		launchItemStore = S2HomeLaunchItem(text: "Store", image: "store")
-		launchItemSettings = S2HomeLaunchItem(text: "Settings", image: "settings")
-		
-		self.addSubviews(launchItemOrder, launchItemSubscriptions, launchItemStore, launchItemSettings)
-		
-		let padding: CGFloat = 20
+	func addConstraints(padding: CGFloat) {
 		
 		NSLayoutConstraint.activate([
 			launchItemOrder.topAnchor.constraint(equalTo: self.topAnchor, constant: padding),
@@ -53,12 +44,42 @@ class S2HomeLauncher : UIView {
 		
 	}
 	
+	func layoutLaunchItems() {
+		
+		launchItemOrder = S2HomeLaunchItem(text: "Order", image: "order") {
+			
+			
+			
+		}
+		
+		launchItemSubscriptions = S2HomeLaunchItem(text: "Subscriptions", image: "subscriptions") {
+			
+			
+			
+		}
+		
+		launchItemStore = S2HomeLaunchItem(text: "Store", image: "store") {
+			
+			let discoverVC = S2DiscoverVC()
+			let navigation = S2UINavigationController(rootViewController: discoverVC)
+			UIViewController.presentingViewController()?.present(navigation, animated: true, completion: nil)
+			
+		}
+		
+		launchItemSettings = S2HomeLaunchItem(text: "Settings", image: "settings") {
+			
+		}
+		
+		self.addSubviews(launchItemOrder, launchItemSubscriptions, launchItemStore, launchItemSettings)
+		addConstraints(padding: 20)
+		
+	}
+	
 	override func layoutSubviews() {
 		
 		super.layoutSubviews()
 		
 		self.backgroundColor = S2UITheme.lightBackground
-		
 		layoutLaunchItems()
 		
 	}

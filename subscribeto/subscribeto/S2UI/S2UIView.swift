@@ -24,6 +24,16 @@ extension UIView {
 	
 }
 
+extension UIViewController {
+	
+	static func presentingViewController() -> UIViewController? {
+		
+		return UIApplication.shared.keyWindow?.rootViewController
+		
+	}
+	
+}
+
 
 class S2UIView : UIView {
 	

@@ -13,16 +13,18 @@ class S2HomeLaunchItem : S2UIView, S2UIClickAnimator {
 	let label: UILabel!
 	let icon: UIImageView!
 	let clickManager: S2UIClickManager
+	let onClick: () -> Void
 	
 	required init?(coder aDecoder: NSCoder) { fatalError("init(coder:) has not been implemented") }
 	
-	init(text: String, image: String) {
+	init(text: String, image: String, onClick : @escaping () -> Void) {
 		
 		let label = UILabel()
 		label.text = text
 		self.label = label
 		self.icon = UIImageView(image: UIImage(named: image)?.withRenderingMode(.alwaysTemplate))
 		self.clickManager = S2UIClickManager()
+		self.onClick = onClick
 		
 		super.init()
 		
@@ -62,14 +64,14 @@ class S2HomeLaunchItem : S2UIView, S2UIClickAnimator {
 		
 		self.addSubviews(label, icon)
 		
-		applyConstraints(padding: 20)
+		applyConstraints(padding: 10)
 		
 		
 	}
 	
 	func clicked() {
 		
-		print("Clicked launch item: \(self.label.text ?? "err").")
+		self.onClick()
 		
 	}
 

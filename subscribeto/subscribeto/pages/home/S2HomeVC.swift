@@ -11,10 +11,10 @@ import UIKit
 class S2HomeVC : UIViewController {
 	
 	// The percentage of height the bottom takes up compared to the top.
-	let containerRatio: CGFloat = 0.75
+	let containerRatio: CGFloat = 0.6
 	
 	var stackView: UIStackView!
-	var topContainer: S2HomeTopContainer!
+	var topContainer: S2HomeDashboard!
 	var bottomContainer: S2HomeLauncher!
 	
 	override func loadView() {
@@ -22,7 +22,7 @@ class S2HomeVC : UIViewController {
 		super.loadView()
 		
 		stackView = UIStackView(frame: .zero)
-		topContainer = S2HomeTopContainer(frame: .zero)
+		topContainer = S2HomeDashboard(frame: .zero)
 		bottomContainer = S2HomeLauncher(frame: .zero)
 		
 		stackView.useAutoLayout()
@@ -46,9 +46,9 @@ class S2HomeVC : UIViewController {
 		
 	}
 	
-	override func viewDidLoad() {
+	override var preferredStatusBarStyle: UIStatusBarStyle {
 		
-		super.viewDidLoad()
+		return .lightContent
 		
 	}
 	
