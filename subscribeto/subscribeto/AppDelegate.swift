@@ -17,16 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 		
 		window = UIWindow(frame: UIScreen.main.bounds)
-		
-		let vc = UIViewController()
-		vc.view.backgroundColor = .white
-		let label = UILabel()
-		label.text = "HI"
-		label.frame = CGRect(x: 10, y: 10, width: 200, height: 30)
-		vc.view.addSubview(label)
-		
-		
-		window?.rootViewController = vc
+		window?.rootViewController = S2HomeVC()
 		window?.makeKeyAndVisible()
 
 		
